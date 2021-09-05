@@ -9,7 +9,7 @@ class Baralho:
         aleatorio=random.randint(0, len(self.cartas)-1)
         resultado=self.cartas[aleatorio]
         #é necessario cria um metodo para que isso nao interfira no jogo pois é necessario remover o
-        #self.cartas.pop(aleatorio)
+        self.cartas.pop(aleatorio)
         return resultado
     def obter_tres(self):
         resultado=[]
@@ -80,10 +80,10 @@ class Jogo:
         for jogada in jogadas:
             for chave,valor in jogada.items():
                 print({chave:valor})
-                print(self.baralho.cartas.index({chave:valor}))
-                for item in self.baralho.cartas:
-                    if item.get(chave)!=None:
-                        print(f"PASSOU {item.get(chave)}")
+                print(self.baralho.baralho_base.index({chave:valor}))
+                for item in self.baralho.baralho_base:
+                    if item.get(chave)==valor:
+                        print(f"PASSOU {item.get(chave)} {item}")
                         ###EXISTE UM BUG POIS ESTOU REMOVENDO A CHAVE DA LISTA DE CARTAS ATRAVES DO baralho.POP()
 j=Jogo()
 j.iniciar()
